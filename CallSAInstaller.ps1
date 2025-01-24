@@ -20,7 +20,8 @@ clear-host
 
         .PREREQUISITES
         You have built your SupportAssist installer from Tech Direct and asigned it a deployment 'key'.
-        This Youtube video will show you how it is done.  
+        This Youtube video will show you how it is done. 
+        https://github.com/mqharrington/mqharrington 
       
 
         .NOTES
