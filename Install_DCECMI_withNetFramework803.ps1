@@ -23,7 +23,7 @@ clear-host
 
         .NOTES
         This script is provided as is. It is meant only as a guide. You can modify it to your own needs.   
-
+        This YouTube video shows how to use DCECMI:   https://www.youtube.com/watch?v=s1TQ9KrSs-o
      
     
     #>
@@ -62,12 +62,12 @@ function Write-Log {
  
 
 # Use $MyInvocation.MyCommand.Definition to run the installer when you don't know what the path is.
-# This will fill find the relative path regardless of where it is.  
+# This will fill find the relative path regardless of where it is. May use this as well: $ScriptDir = Split-Path -Parent $PSCommandPath 
 $ScriptDir = Split-Path -Parent $MyInvocation.MyCommand.Definition
 Write-Log -Message "working path is $scriptDir"
 
 # Define installer paths  
-$Net8Framework = Join-Path -Path $ScriptDir -ChildPath "dotnet-runtime-8.0.13-win-x64.exe"
+$Net8Framework = Join-Path -Path $ScriptDir -ChildPath "windowsdesktop-runtime-8.0.13-win-x64.exe"
 $Net8Args = "/install /quiet /norestart /log c:\logs\MicrosoftNetRuntime8.log"
 $DCECMIInstaller = Join-Path -Path $ScriptDir -ChildPath "Dell-Command-Endpoint-Configure-for-Microsoft-Intune_G9GM4_WIN_2.0.0.6_A01.EXE"
 Write-Log -Message "Installer paths defined"
@@ -125,21 +125,4 @@ if (Get-ChildItem "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall" -R
         write-log -LogType ERROR -Message "DCECMI installer not found at $DCECMIInstaller. Installation aborted."
     }
 }
-
-
-  
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
 
