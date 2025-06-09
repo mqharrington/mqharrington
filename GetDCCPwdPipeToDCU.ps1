@@ -113,7 +113,13 @@ function Run-DcuCli {
 
 
 # Find the installation location of Dell Command Update.  If not found EXIT script. 
-$x86 = Test-Path -Path "C:\Program Files\Dell\CommandUpdate\Dcu-Cli.exe"if ($x86 -like "*False*") {sleep -Milliseconds 1} ELSE {$DCUEXEPath = "C:\Program Files\Dell\CommandUpdate\Dcu-Cli.exe"}$x64 = Test-Path -Path "C:\Program Files (x86)\Dell\CommandUpdate\Dcu-Cli.exe"if ($x64 -like "*False*") {sleep -Milliseconds 1} ELSE {$DCUEXEPath = "C:\Program Files (x86)\Dell\CommandUpdate\Dcu-Cli.exe"}if ($DCUEXEPath -like "") 
+$x86 = Test-Path -Path "C:\Program Files\Dell\CommandUpdate\Dcu-Cli.exe"
+if ($x86 -like "*False*") {sleep -Milliseconds 1} ELSE {$DCUEXEPath = "C:\Program Files\Dell\CommandUpdate\Dcu-Cli.exe"}
+
+$x64 = Test-Path -Path "C:\Program Files (x86)\Dell\CommandUpdate\Dcu-Cli.exe"
+if ($x64 -like "*False*") {sleep -Milliseconds 1} ELSE {$DCUEXEPath = "C:\Program Files (x86)\Dell\CommandUpdate\Dcu-Cli.exe"}
+
+if ($DCUEXEPath -like "") 
 {
      
     EXIT
@@ -171,7 +177,7 @@ $serialNumber = (get-ciminstance -classname win32_bios).SerialNumber
 $allHardwarePasswordInfo = @()
 
 # This is the path within MSGraph that contains all of the DCICMI password information
-$uri = "https://graph.microsoft.com/beta/deviceManagement/hardwarePasswordInfo"
+$uri = "https://graph.microsoft.com/beta/deviceManagement/hardwarePasswordDetails"
 
 
 
